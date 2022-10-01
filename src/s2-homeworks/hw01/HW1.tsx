@@ -14,7 +14,20 @@ import avatar from './avatar.png'
 * */
 
 // нужно создать правильный тип вместо any
-export type MessageType = any
+
+type MessageUserType = {
+    avatar: string;
+    name: string;
+}
+type MessageContentType = {
+    text: string;
+    time: string;
+}
+export type MessageType = {
+    id: number;
+    user: MessageUserType;
+    message: MessageContentType;
+}
 
 // структуру объекта не менять
 export const message0: MessageType = {
@@ -46,7 +59,7 @@ const HW1 = () => {
             <div className={s2.hwTitle}>Homework #1</div>
             <div className={s2.hw}>
                 {/*проверка отображения (не менять)*/}
-                <div>
+                <div className={s2.dialog}>
                     <Message message={message0} />
                     <FriendMessage message={friendMessage0} />
                 </div>
