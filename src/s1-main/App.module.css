@@ -2,10 +2,11 @@
 
 .App {
   --header_height: 60px;
+  padding: 20px 70px;
 }
 
 .hw {
-  width: 95%;
+  max-width: 1280px;
   margin: 10px auto;
 }
 
@@ -20,5 +21,6 @@
 .dialog {
   display: flex;
   flex-direction: column;
-
+  gap: 30px;
+  margin-top: 34px;
 }

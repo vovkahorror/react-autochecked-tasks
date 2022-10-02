@@ -7,6 +7,7 @@
 .imageAndText {
   display: flex;
   flex-direction: row-reverse;
+  gap: 20px;
 }
 
 .imageAndText img {
@@ -16,16 +17,22 @@
 }
 
 .text {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 3px;
   padding: 7px 13px 8px 13px;
   background: #0066CC;
   box-shadow: 0px 5px 20px rgba(29, 33, 38, 0.03), 0px 1px 2px rgba(29, 33, 38, 0.1);
   border-radius: 10px 10px 0 10px;
 }
 
-.text_after {
+.text::before {
+  content: '';
+  position: absolute;
+  left: 100%;
+  bottom: 0;
   align-self: flex-end;
   width: 20px;
   height: 20px;
