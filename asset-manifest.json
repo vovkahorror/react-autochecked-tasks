@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/react-autochecked-tasks/static/css/main.3cc07dc5.css",
-    "main.js": "/react-autochecked-tasks/static/js/main.135c7dcb.js",
+    "main.js": "/react-autochecked-tasks/static/js/main.03af49ed.js",
     "static/js/787.f56badfc.chunk.js": "/react-autochecked-tasks/static/js/787.f56badfc.chunk.js",
     "static/media/avatar-friend.png": "/react-autochecked-tasks/static/media/avatar-friend.90777aa5268210172ad6.png",
     "static/media/avatar.png": "/react-autochecked-tasks/static/media/avatar.d947cb9d0d13765666b6.png",
     "static/media/checked.svg": "/react-autochecked-tasks/static/media/checked.b75ca55e8759862b4083.svg",
     "index.html": "/react-autochecked-tasks/index.html",
     "main.3cc07dc5.css.map": "/react-autochecked-tasks/static/css/main.3cc07dc5.css.map",
-    "main.135c7dcb.js.map": "/react-autochecked-tasks/static/js/main.135c7dcb.js.map",
+    "main.03af49ed.js.map": "/react-autochecked-tasks/static/js/main.03af49ed.js.map",
     "787.f56badfc.chunk.js.map": "/react-autochecked-tasks/static/js/787.f56badfc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3cc07dc5.css",
-    "static/js/main.135c7dcb.js"
+    "static/js/main.03af49ed.js"
   ]
 }
