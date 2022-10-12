@@ -33,13 +33,13 @@ export const pureAddUserCallback = (name: string, setUsers: (users: UserType[]) 
 
 const HW3 = () => {
     const [users, setUsers] = useState<UserType[]>([]);
-    
+
     const addUserCallback = (name: string) => {
         pureAddUserCallback(name, setUsers, users);
     };
 
     return (
-        <div id={'hw3'}>
+        <div id={'hw3'} className={s2.componentWrapper}>
             <div className={s2.hwTitle}>Homework #3</div>
             {/*для автоматической проверки дз (не менять)*/}
 

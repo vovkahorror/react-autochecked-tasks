@@ -1,8 +1,8 @@
-import React, {FC} from 'react'
-import {NavLink} from 'react-router-dom'
-import s from './Sidebar.module.css'
-import {PATH} from '../Pages'
-import closeIcon from './closeOutline.svg'
+import React, {FC} from 'react';
+import {NavLink} from 'react-router-dom';
+import s from './Sidebar.module.css';
+import {PATH} from '../Pages';
+import closeIcon from './closeOutline.svg';
 
 type PropsType = {
     open: boolean
@@ -11,7 +11,10 @@ type PropsType = {
 
 export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
     const sidebarClass = s.sidebar
-        + (open ? ' ' + s.open : '')
+        + (open ? ' ' + s.open : '');
+
+    const navLinkClass = (navData: { isActive: boolean; isPending: boolean; }) => navData.isActive ? s.active : s.nav;
+
     return (
         <>
             {/*затемнение справа от открытого меню*/}
@@ -31,7 +34,7 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         id={'hw5-pre-junior-link'}
                         to={PATH.PRE_JUNIOR}
                         onClick={handleClose}
-                        // className={...} // делает студент
+                        className={navLinkClass} // делает студент
                     >
                         Pre-junior
                     </NavLink>
@@ -39,7 +42,7 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         id={'hw5-junior-link'}
                         to={PATH.JUNIOR}
                         onClick={handleClose}
-                        // className={...} // делает студент
+                        className={navLinkClass} // делает студент
                     >
                         Junior
                     </NavLink>
@@ -47,12 +50,12 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         id={'hw5-junior-plus-link'}
                         to={PATH.JUNIOR_PLUS}
                         onClick={handleClose}
-                        // className={...} // делает студент
+                        className={navLinkClass} // делает студент
                     >
                         Junior Plus
                     </NavLink>
                 </nav>
             </aside>
         </>
-    )
-}
+    );
+};
