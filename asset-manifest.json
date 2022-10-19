@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-autochecked-tasks/static/css/main.8d5c4874.css",
-    "main.js": "/react-autochecked-tasks/static/js/main.91b8ec29.js",
+    "main.js": "/react-autochecked-tasks/static/js/main.380ec530.js",
     "static/js/787.f56badfc.chunk.js": "/react-autochecked-tasks/static/js/787.f56badfc.chunk.js",
     "static/media/avatar-friend.png": "/react-autochecked-tasks/static/media/avatar-friend.90777aa5268210172ad6.png",
     "static/media/avatar.png": "/react-autochecked-tasks/static/media/avatar.d947cb9d0d13765666b6.png",
@@ -11,11 +11,11 @@
     "index.html": "/react-autochecked-tasks/index.html",
     "static/media/burger.svg": "/react-autochecked-tasks/static/media/burger.700e416f7bfe3697f96b36c778d25355.svg",
     "main.8d5c4874.css.map": "/react-autochecked-tasks/static/css/main.8d5c4874.css.map",
-    "main.91b8ec29.js.map": "/react-autochecked-tasks/static/js/main.91b8ec29.js.map",
+    "main.380ec530.js.map": "/react-autochecked-tasks/static/js/main.380ec530.js.map",
     "787.f56badfc.chunk.js.map": "/react-autochecked-tasks/static/js/787.f56badfc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8d5c4874.css",
-    "static/js/main.91b8ec29.js"
+    "static/js/main.380ec530.js"
   ]
 }
