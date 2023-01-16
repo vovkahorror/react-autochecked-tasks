@@ -1,23 +1,32 @@
 [data-theme='1'] {
-    --color: #000000;
-    --background: #FFFFFF;
+  --color: #000000;
+  --background: #FFFFFF;
 }
 
 [data-theme='2'] {
-    --color: #000000;
-    --background: #DDEEFF;
+  --color: #000000;
+  --background: #DDEEFF;
 }
 
 [data-theme='3'] {
-    --color: #FFFFFF;
-    --background: #212A34;
+  --color: #FFFFFF;
+  --background: #212A34;
 }
 
 html {
-    background-color: var(--background);
-    color: var(--color);
+  background-color: var(--background);
+  color: var(--color);
 }
 
 .select {
-
+  padding: 8px 10px 11px 10px;
+  color: var(--color);
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  background-color: var(--background);
+  border: 1px solid #323232;
+  border-radius: 2px;
 }
