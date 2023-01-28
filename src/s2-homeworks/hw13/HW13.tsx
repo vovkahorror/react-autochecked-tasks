@@ -16,9 +16,10 @@ import errorUnknown from './images/error.svg';
 
 const HW13 = () => {
     const [code, setCode] = useState('');
-    const [text, setText] = useState<ReactNode>('');
+    const [text, setText] = useState('');
     const [info, setInfo] = useState('');
     const [image, setImage] = useState('');
+    const [request, setRequest] = useState(false);
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -30,13 +31,7 @@ const HW13 = () => {
         setImage('');
         setText('');
         setInfo('...loading');
-
-        const text200 = <span>...всё ок)<br/> код 200 - обычно означает что скорее всего всё ок)</span>;
-        const text400 = <span>Ты не отправил success в body вообще! <br/> ошибка 400 - обычно означает что скорее всего
-            фронт отправил что-то не то на бэк!</span>;
-        const text500 = <span>эмитация ошибки на сервере <br/> ошибка 500 - обычно означает что что-то сломалось на
-            сервере, например база данных)</span>;
-        const textUnknownError = <span>Network Error<br/> AxiosError</span>;
+        setRequest(true);
 
         axios
             .post(url, {success: x})
@@ -44,7 +39,8 @@ const HW13 = () => {
                 setCode('Код 200!');
                 setImage(success200);
                 // дописать
-                setText(text200);
+                setText('...всё ок)');
+                setInfo('код 200 - обычно означает что скорее всего всё ок)');
             })
             .catch((e) => {
                 // дописать
@@ -52,23 +48,28 @@ const HW13 = () => {
                     case 400:
                         setCode('Ошибка 400!');
                         setImage(error400);
-                        setText(text400);
+                        setText('Ты не отправил success в body вообще!');
+                        setInfo('ошибка 400 - обычно означает что скорее всего\n' +
+                            '            фронт отправил что-то не то на бэк!');
                         break;
 
                     case 500:
                         setCode('Ошибка 500!');
                         setImage(error500);
-                        setText(text500);
+                        setText('эмитация ошибки на сервере');
+                        setInfo('ошибка 500 - обычно означает что что-то сломалось на\n' +
+                            '            сервере, например база данных)');
                         break;
 
                     default:
                         setCode('Error!');
                         setImage(errorUnknown);
-                        setText(textUnknownError);
+                        setText('Network Error');
+                        setInfo('AxiosError');
                 }
             })
             .finally(() => {
-                setInfo('');
+                setRequest(false);
             });
     };
 
@@ -84,7 +85,7 @@ const HW13 = () => {
                             onClick={send(true)}
                             xType={'secondary'}
                             // дописать
-                            disabled={!!info}
+                            disabled={request}
                         >
                             Send true
                         </SuperButton>
@@ -93,7 +94,7 @@ const HW13 = () => {
                             onClick={send(false)}
                             xType={'secondary'}
                             // дописать
-                            disabled={!!info}
+                            disabled={request}
                         >
                             Send false
                         </SuperButton>
@@ -102,7 +103,7 @@ const HW13 = () => {
                             onClick={send(undefined)}
                             xType={'secondary'}
                             // дописать
-                            disabled={!!info}
+                            disabled={request}
                         >
                             Send undefined
                         </SuperButton>
@@ -111,7 +112,7 @@ const HW13 = () => {
                             onClick={send(null)} // имитация запроса на не корректный адрес
                             xType={'secondary'}
                             // дописать
-                            disabled={!!info}
+                            disabled={request}
                         >
                             Send null
                         </SuperButton>
