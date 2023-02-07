@@ -1,7 +1,39 @@
-.tech {
+.searchComponent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  max-width: 468px;
+}
 
+.tech {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .loading {
+  position: absolute;
+  top: 47px;
+  right: 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #4D4D4D;
+}
 
+.input {
+  margin-bottom: 19px;
+  padding: 8px 12px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  border: 1px solid #0066CC;
+  border-radius: 2px;
 }

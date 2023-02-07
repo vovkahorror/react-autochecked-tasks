@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s2 from '../../s1-main/App.module.css';
 import s from './HW14.module.css';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import SuperDebouncedInput from './common/c8-SuperDebouncedInput/SuperDebouncedInput';
 import {useSearchParams} from 'react-router-dom';
 
@@ -19,6 +19,7 @@ const getTechs = (find: string) => {
             'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test2',
             {params: {find}},
         )
+        .then(res => res.data.techs)
         .catch((e) => {
             alert(e.response?.data?.errorText || e.message);
         });
@@ -37,8 +38,11 @@ const HW14 = () => {
                 // делает студент
 
                 // сохранить пришедшие данные
+                setLoading(false);
 
-                //
+                if (Array.isArray(res)) {
+                    setTechs(res);
+                }
             });
     };
 
@@ -49,7 +53,7 @@ const HW14 = () => {
         // добавить/заменить значение в квери урла
         // setSearchParams(
 
-        //
+        setSearchParams(value);
     };
 
     useEffect(() => {
@@ -69,12 +73,13 @@ const HW14 = () => {
             <div className={s2.componentWrapper}>
                 <div className={s2.hwTitle}>Homework #14</div>
 
-                <div className={s2.hw}>
+                <div className={s2.hw + ' ' + s.searchComponent}>
                     <SuperDebouncedInput
                         id={'hw14-super-debounced-input'}
                         value={find}
                         onChangeText={onChangeText}
                         onDebouncedChange={sendQuery}
+                        className={s.input}
                     />
 
                     <div id={'hw14-loading'} className={s.loading}>
