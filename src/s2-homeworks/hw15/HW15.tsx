@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react'
-import s2 from '../../s1-main/App.module.css'
-import s from './HW15.module.css'
-import axios from 'axios'
-import SuperPagination from './common/c9-SuperPagination/SuperPagination'
-import {useSearchParams} from 'react-router-dom'
-import SuperSort from './common/c10-SuperSort/SuperSort'
+import React, {useEffect, useState} from 'react';
+import s2 from '../../s1-main/App.module.css';
+import s from './HW15.module.css';
+import axios, {AxiosResponse} from 'axios';
+import SuperPagination from './common/c9-SuperPagination/SuperPagination';
+import {useSearchParams} from 'react-router-dom';
+import SuperSort from './common/c10-SuperSort/SuperSort';
 
 /*
 * 1 - дописать SuperPagination
@@ -31,64 +31,68 @@ const getTechs = (params: ParamsType) => {
     return axios
         .get<{ techs: TechType[], totalCount: number }>(
             'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test3',
-            {params}
-        )
-        .catch((e) => {
-            alert(e.response?.data?.errorText || e.message)
-        })
-}
+            {params},
+        );
+
+};
 
 const HW15 = () => {
-    const [sort, setSort] = useState('')
-    const [page, setPage] = useState(1)
-    const [count, setCount] = useState(4)
-    const [idLoading, setLoading] = useState(false)
-    const [totalCount, setTotalCount] = useState(100)
-    const [searchParams, setSearchParams] = useSearchParams()
-    const [techs, setTechs] = useState<TechType[]>([])
+    const [sort, setSort] = useState('');
+    const [page, setPage] = useState(1);
+    const [count, setCount] = useState(4);
+    const [idLoading, setLoading] = useState(false);
+    const [totalCount, setTotalCount] = useState(100);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [techs, setTechs] = useState<TechType[]>([]);
 
-    const sendQuery = (params: any) => {
-        setLoading(true)
+    const sendQuery = (params: ParamsType) => {
+        setLoading(true);
         getTechs(params)
             .then((res) => {
                 // делает студент
+                setLoading(false);
+                setTotalCount(res.data.totalCount);
+                setTechs(res.data.techs);
 
                 // сохранить пришедшие данные
 
                 //
             })
-    }
+            .catch((e) => {
+                alert(e.response?.data?.errorText || e.message);
+            });
+    };
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
 
-        // setPage(
-        // setCount(
+        setPage(newPage);
+        setCount(newCount);
 
-        // sendQuery(
-        // setSearchParams(
+        sendQuery({sort, page: newPage, count: newCount});
+        setSearchParams({sort, page: newPage.toString(), count: newCount.toString()});
 
         //
-    }
+    };
 
     const onChangeSort = (newSort: string) => {
         // делает студент
 
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
+        setSort(newSort);
+        setPage(1); // при сортировке сбрасывать на 1 страницу
 
-        // sendQuery(
-        // setSearchParams(
+        sendQuery({sort: newSort, page, count});
+        setSearchParams({sort: newSort, page: page.toString(), count: count.toString()});
 
         //
-    }
+    };
 
     useEffect(() => {
-        const params = Object.fromEntries(searchParams)
-        sendQuery({page: params.page, count: params.count})
-        setPage(+params.page || 1)
-        setCount(+params.count || 4)
-    }, [])
+        const params = Object.fromEntries(searchParams);
+        sendQuery({sort: sort, page: +params.page, count: +params.count});
+        setPage(+params.page || 1);
+        setCount(+params.count || 4);
+    }, []);
 
     const mappedTechs = techs.map(t => (
         <div key={t.id} className={s.row}>
@@ -100,38 +104,40 @@ const HW15 = () => {
                 {t.developer}
             </div>
         </div>
-    ))
+    ));
 
     return (
         <div id={'hw15'}>
-            <div className={s2.hwTitle}>Homework #15</div>
+            <div className={s2.componentWrapper}>
+                <div className={s2.hwTitle}>Homework #15</div>
 
-            <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                <div className={s2.hw}>
+                    {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
 
-                <SuperPagination
-                    page={page}
-                    itemsCountForPage={count}
-                    totalCount={totalCount}
-                    onChange={onChangePagination}
-                />
+                    <SuperPagination
+                        page={page}
+                        itemsCountForPage={count}
+                        totalCount={totalCount}
+                        onChange={onChangePagination}
+                    />
 
-                <div className={s.rowHeader}>
-                    <div className={s.techHeader}>
-                        tech
-                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                    <div className={s.rowHeader}>
+                        <div className={s.techHeader}>
+                            tech
+                            <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                        </div>
+
+                        <div className={s.developerHeader}>
+                            developer
+                            <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                        </div>
                     </div>
 
-                    <div className={s.developerHeader}>
-                        developer
-                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
-                    </div>
+                    {mappedTechs}
                 </div>
-
-                {mappedTechs}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default HW15
+export default HW15;

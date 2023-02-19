@@ -1,7 +1,7 @@
-import React from 'react'
-import SuperSelect from '../../../hw07/common/c5-SuperSelect/SuperSelect'
-import {Pagination} from '@mui/material'
-import s from './SuperPagination.module.css'
+import React, {ChangeEvent} from 'react';
+import SuperSelect from '../../../hw07/common/c5-SuperSelect/SuperSelect';
+import {Pagination} from '@mui/material';
+import s from './SuperPagination.module.css';
 
 export type SuperPaginationPropsType = {
     id?: string
@@ -14,17 +14,19 @@ export type SuperPaginationPropsType = {
 const SuperPagination: React.FC<SuperPaginationPropsType> = (
     {
         page, itemsCountForPage, totalCount, onChange, id = 'hw15',
-    }
+    },
 ) => {
-    const lastPage = 10 // пишет студент // вычислить количество страниц
+    const lastPage = Math.ceil(totalCount / itemsCountForPage); // пишет студент // вычислить количество страниц
 
-    const onChangeCallback = (event: any, page: number) => {
+    const onChangeCallback = (event: ChangeEvent<unknown>, page: number) => {
         // пишет студент
-    }
+        onChange(page, itemsCountForPage);
+    };
 
-    const onChangeSelect = (event: any) => {
+    const onChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
         // пишет студент
-    }
+        onChange(1, +event.currentTarget.value);
+    };
 
     return (
         <div className={s.pagination}>
@@ -59,7 +61,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                 строк в таблице
             </span>
         </div>
-    )
-}
+    );
+};
 
-export default SuperPagination
+export default SuperPagination;
