@@ -34,10 +34,13 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                 id={id + '-pagination'}
                 sx={{
                     // стили для Pagination // пишет студент
+                    marginRight: '24px',
                 }}
                 page={page}
                 count={lastPage}
                 onChange={onChangeCallback}
+                color={'primary'}
+                shape={'rounded'}
                 hideNextButton
                 hidePrevButton
             />
@@ -54,6 +57,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                     {id: 7, value: 7},
                     {id: 10, value: 10},
                 ]}
+                className={s.select}
                 onChange={onChangeSelect}
             />
 
