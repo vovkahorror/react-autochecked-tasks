@@ -25,7 +25,7 @@ const HW13 = () => {
         const url =
             x === null
                 ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
-                : 'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test';
+                : 'https://samurai.it-incubator.io/api/3.0/homework/test';
 
         setCode('');
         setImage('');
@@ -118,7 +118,7 @@ const HW13 = () => {
 
                     <div className={s.responseContainer}>
                         <div className={s.imageContainer}>
-                            {image && <img src={image} className={s.image} alt='status'/>}
+                            {image && <img src={image} className={s.image} alt="status"/>}
                         </div>
 
                         <div className={s.textContainer}>
